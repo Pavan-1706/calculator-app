@@ -1,9 +1,5 @@
-FROM maven:3.9.9-eclipse-temurin-17
+FROM eclipse-temurin:17-jdk
 
-WORKDIR /app
+COPY target/calculator-app-1.0-SNAPSHOT.jar app.jar
 
-COPY . .
-
-RUN mvn clean package
-
-CMD ["java","-jar","target/calculator-app-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
